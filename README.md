@@ -26,14 +26,9 @@ Windows 11とWindows 10用のドライバー開発を想定しています。
 
 [![Windows Driver Kit (SDK) のダウンロード](wdk-1.png)](https://learn.microsoft.com/ja-jp/windows-hardware/drivers/download-the-wdk)
 
-<br/>
-
-<br/>
 この資料ページはブラウザの検索窓に WDK と入力して検索可能です。
 
 [![WDK](wdk-2.png)](https://learn.microsoft.com/ja-jp/windows-hardware/drivers/download-the-wdk)
-
-<br/>
 
 ### 準備
 
@@ -42,7 +37,6 @@ Windows 11とWindows 10用のドライバー開発を想定しています。
 - ブラウザでインターネットにアクセスできる環境
 
 続いて開発環境のインストール手順を紹介します。
-</br>
 
 ### 検証済環境
 
@@ -62,22 +56,11 @@ Visual Studio 2022 をすでにインストール済の方は、再インスト�
 
 Visual Studio 2022 のインストール時の設定操作では、次の点に注意してください。
 
-- 最低限は、C++によるデスクトップ開発の **ワークロード** を選択
+- 最低限 C++によるデスクトップ開発の **ワークロード** を選択
 - Windows 11 SDK (10.0.22621.0) の選択確認（デフォルトで選択済）
-- MSVC v142 - VS2019 C++ x64/x86 Spectre 軽減ライブラリ（最新）ほかの **個別コンポーネント** を必ずインストール
+- MSVC v142 - VS2019 C++ x64/x86 Spectre 軽減ライブラリ（最新）ほかの **個別コンポーネント** を必ず選択してインストール
 
-★説明がおかしい点
-
-手順2: SDK をインストールする
-の説明は、別々の頃の名残り
-
-- 現在ではVSとともにSDKをインストール
-
-- Enterprise WDK (EWDK)は使用しないため、インストールしません。
-
-
-
-#### インストール ワークロード の選択
+### インストール ワークロード の選択
 
 Visual Studio のインストール時に次のワークロードを選択します。
 他のワークロードを追加で選択しても構いませんが、実習では使用しません。
@@ -86,12 +69,11 @@ Visual Studio のインストール時に次のワークロードを選択しま
 ![ワークロード選択](vs--2.png)
 <br/>**ワークロード選択 画面**<br/>
 
-#### Windows SDK 最新版 (10.0.22621.0) の選択
+### Windows SDK 最新版 (10.0.22621.0) の選択
 
 個別のコンポーネントネント表示がデフォルトで選択済ですが再度選択し直して右側ペインに表示させます。
 
-
-#### 個別コンポーネント選択
+### 個別コンポーネント選択
 
 最新版 (10.0.22621.0) SDKを含めて、各必要コンポーネントを選択、確認します。
 必須なコンポーネントを次に示します。
@@ -99,63 +81,94 @@ Visual Studio のインストール時に次のワークロードを選択しま
 - Windows 11 SDK (10.0.22632.0)
 - MSVC v143 - VS 2022 C++ x64/x86 ビルドツール (最新)
 - MSVC v143 - VS 2022 C++ x64/x86 Spectre 軽減済みライブラリ (最新)
-- 最新の v143 ビルドツール用 C++ ATL (X86 および x64)
-- 最新の v143 ビルドツール用 C++ MFC (X86 および x64)
-- Spectre の軽減策を含む、最新の v143 ビルドツール用 C++ ATL (X86 および x64)
-- Spectre の軽減策を含む、最新の v143 ビルドツール用 C++ MFC (X86 および x64)
+- 最新の v143 ビルドツール用 C++ ATL (x86 および x64)
+- 最新の v143 ビルドツール用 C++ MFC (x86 および x64)
+- Spectre の軽減策を含む、最新の v143 ビルドツール用 C++ ATL (x86 および x64)
+- Spectre の軽減策を含む、最新の v143 ビルドツール用 C++ MFC (x86 および x64)
 
-Visual Studio Installer でのインストール時の個別コンポーネント表示順は前述の通りではありません。
+Visual Studio Installer インストール時の個別コンポーネント選択画面の表示順は、前述の通りではありません。
 表示順が異なり、似た様な名前のコンポーネントが多いため、慎重に選択します。
-
-</br>
+Spectre 軽減策を含む、最新の V143 ビルドツール用 C++ ATLとMFC の選択画面を以下に示します。
 
 ![Spectre 軽減ライブラリ（最新）](vs--3.png)
-<br/>**Spectre 軽減策を含む、最新の V143 ビルドツール用 C++ ATL/MFC 選択画面**<br/>
+<br/>**Spectre 軽減策を含む、最新の V143 ビルドツール用 C++ ATL/MFC 選択画面**<br/><br/>
 
-</br>
+Windows SDK 10.0.22621.1 と x64/x86 のATL と MFC 選択画面を以下に示します。
 
-![Windows SDK 最新版](vs--4.png)
-<br/>**Windows SDK 10.0.22621.1 と ATL/MFC 選択確認画面**<br/>
+![Windows SDK 10.0.22621.1 と ATL/MFC](vs--4.png)
+<br/>**Windows SDK 10.0.22621.1 と ATL/MFC 選択確認画面**<br/><br/>
 
-</br>
+最新MSVC v143 - VS 2022 C++ と対応 Spectre 軽減ライブラリ選択画面を以下に示します。
 
-![Windows SDK 最新版](vs--6.png)
-<br/>**最新MSVC v143 - VS 2022 C++ と対応 Spectre 軽減ライブラリ選択確認画面**<br/>
+![最新MSVCと対応 Spectre 軽減ライブラリ](vs--6.png)
+<br/>**最新MSVC v143 - VS 2022 C++ と対応 Spectre 軽減ライブラリ選択確認画面**<br/><br/>
 
-</br>
+Visial Studio Installer の個別のコンポーネントの設定を確認して、右下の「インストール」ボタンをクリックして、インストールを開始します。
 
-設定を確認して「インストール」★★★
-![変更または開始](vs--9.png)
+![Windows SDK 最新版](vs--98.png)
+<br/>**最新MSVC v143 - VS 2022 C++ と対応 Spectre 軽減ライブラリ選択確認画面**
 
-## WDK
-
-★★★WDKのリンク
-Windows Driver Kit (WDK) の **今すぐダウンロード** をクリックしてダウンロード用ページを表示します。このページの内容と URL は時々更新されます。
-
-![今すぐダウンロード](WDK11.png)
-<br/>**今すぐダウンロード 表示画面**<br/>
-
-表示されたページの中程にある、
-
-	手順 3:Windows 11 WDK をインストールする
-
-	WDK for Windows 11 のダウンロード
-
-のリンクをクリックして **wdksetup.exe** を入手して実行、インストールを開始します。<br/>
-手順2 のWindows 11 SDKは前項の通り、Visual Studio 2019 に含まれるため、飛ばします。<br/>
-
-![WDK のダウンロード](WDK12p.png)
-<br/>**WDK のダウンロード 選択画面**<br/>
-
-すぐ下にある **EWDK with Visual Studio Build Tools** は、Visual Studio 無しで Windows ドライバーをビルドするツールです。
-使用しないためダウンロード不要です。
 <br/>
+
+## WDK をインストールする
+
+分かり難いのですがこの前項の、「手順 2: SDK をインストールする」は、Visual Studio 2022 と同時にインストールするため、不要です。
+**現在のバージョンの Visual Studio では手順2は無視して下さい。**
+
+![手順 3: WDK をインストールする](wdk-3.png)
+<br/>**手順 2: と 手順 3: WDK をインストールする** 画面
+
+### WDK のダウンロード
+
+**手順 3: WDK をインストールする**  のすぐ下、**WDK 10.0.22621 のダウンロード** をクリックして「wdksetip.exe」をダウンロードします。
 
 ### WDK のインストール
 
-wdksetup.exe を実行してインストールする手順を示します。
-起動画面では **Install the Windows Driver Kit - Windows 10.0.22001.1 to this computer**
-を選択して **Next** で進みます。
 
-下の選択肢の **Download the Windows Driver Kit - Windows 10.0.22001.1 for installation on a separate computer**
+wdksetup.exe を実行してインストールする手順を示します。
+起動画面の「**Specify Location**」では **Install the Windows Driver Kit - Windows 10.0.22621.2428 to this computer**を選択して **Next** で進みます。
+この画面ではインストール先のディレクトリを変更出来ますが、トラブルの元なので、変更しないことをお勧めします。
+
+下の選択肢の **Download the Windows Driver Kit - Windows 10.0.226211.2428 for installation on a separate computer**
 は、オフライン インストール用の全 WDK バイナリーのダウンロードを行います。
+
+![WDK のインストール](wdk-11.png)
+<br/>**Specify Location の画面**<br/>
+
+WDKのインストール中のダイアログです。
+
+![WDK のインストール](wdk-14.png)
+<br/>**Installing features.. ダイアログ**<br/>
+
+**Welcome to ...** は、WDK本体のインストール完了ダイアログです。これで完了ではありません。続けて Visual Studio extension （Visual Studio WDK 拡張機能）をインストールします。
+
+![WDK のインストール](wdk-15.png)
+<br/>**Welcome to ... 画面**<br/>
+
+「Install Windows Driver Kit Visual Studio extension」チェックボックスをチェックしたまま「Close」ボタンをクリックすると、**VSIX Installer** が立ち上がり、WDK 拡張機能のインストールを開始します。
+
+![WDK のインストール](wdk-16.png)
+<br/>**WSIX Installer 画面**<br/>
+
+拡張機能のインストール中ダイアログです。
+
+![WDK のインストール](wdk-17.png)
+<br/>**WSIX Installer インストール中画面**<br/>
+
+拡張機能のインストール完了ダイアログです。
+
+![インストールが完了しました](wdk-18.png)
+<br/>**WSIX インストールが完了しました 画面**<br/>
+
+これで Visual Studio を起動して、Windows ドライバーを開発することが出来る様になりました。
+
+### Enterprise WDK (EWDK)
+
+nterprise WDK はVisual Studioが使えない、オフライン環境でのドライバー開発キットです。
+今回は使用しません。
+
+### Windows 向けのドライバー サンプル
+
+ドライバー サンプルはこの WDK 解説通り様々な方法で入手出来ますが、リアルタイムで配布内容が異なるため、今回は使用しません。
+実習では使用しませんが、興味がある方は、ダウンロードして動作確認をすることも可能です。
+
