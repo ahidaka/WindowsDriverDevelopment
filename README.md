@@ -18,9 +18,9 @@ Windows 11とWindows 10用のドライバー開発を想定しています。
 ### 参考資料
 
 この文書は次の[「Windows Driver Kit (SDK) のダウンロード」ページ](https://learn.microsoft.com/ja-jp/windows-hardware/drivers/download-the-wdk)を参考にしています。
-しかし、**この資料には一部不正確な部分があるため**、本文中で補足説明します。
-**特に個別コンポーネントは、最低でもこの文書のコンポーネントを選択してインストールをお願いします。**
-余計なコンポーネントのインストールは全く問題ありません。
+しかし **この参照先には一部不正確な部分があるため**、本文中で補足説明します。
+**特に個別コンポーネントの選択は、必ずこの文書のコンポーネントを選択してインストールをお願いします。**
+他のコンポーネントは追加選択しても問題はありません。
 
 [https://learn.microsoft.com/ja-jp/windows-hardware/drivers/download-the-wdk](https://learn.microsoft.com/ja-jp/windows-hardware/drivers/download-the-wdk)
 
@@ -76,7 +76,7 @@ Visual Studio のインストール時に次のワークロードを選択しま
 ### 個別コンポーネント選択
 
 最新版 (10.0.22621.0) SDKを含めて、各必要コンポーネントを選択、確認します。
-必須なコンポーネントを次に示します。
+**WDK使用時の重要ポイントです。** 必須なコンポーネントを次に示します。
 
 - Windows 11 SDK (10.0.22632.0)
 - MSVC v143 - VS 2022 C++ x64/x86 ビルドツール (最新)
@@ -172,3 +172,12 @@ nterprise WDK はVisual Studioが使えない、オフライン環境でのド�
 ドライバー サンプルはこの WDK 解説通り様々な方法で入手出来ますが、リアルタイムで配布内容が異なるため、今回は使用しません。
 実習では使用しませんが、興味がある方は、ダウンロードして動作確認をすることも可能です。
 
+以上で、Windows ドライバー開発環境のインストール完了です。
+
+<br/>
+
+公開先 GitHub page：
+[https://ahidaka.github.io/WindowsDriverDevelopment/](https://ahidaka.github.io/WindowsDriverDevelopment/)
+
+Windows ドライバー開発問合せ：
+[株式会社デバイスドライバーズ https://www.devdrv.co.jp/](https://www.devdrv.co.jp/)
